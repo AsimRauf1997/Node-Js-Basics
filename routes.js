@@ -34,4 +34,16 @@ const requestHandler = (req, res) => {
   res.write("<body> <h1>Hello Form NodeJs Server</h1></body>");
   res.write("</html>");
 };
+// different methods of exporting
 module.exports = requestHandler;
+
+// module.exports = {
+//   handler: requestHandler,
+//   someText: "some Hard Coded Text",
+// };
+
+// module.exports.handler = requestHandler;
+// module.exports.someText = "some hard coded text";
+
+// exports.handler = requestHandler;
+// exports.someText = "some hard coded Text";
