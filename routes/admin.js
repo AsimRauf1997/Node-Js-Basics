@@ -1,16 +1,23 @@
 const expres = require("express");
 const path = require("path");
 const router = expres.Router();
+
+const products = [];
 // /admin/add-product
 router.get("/add-product", (req, res, next) => {
-  console.log("In the another middleWare:");
-  res.sendFile(path.join(__dirname, "..", "views", "add-product.html"));
+  // res.sendFile(path.join(__dirname, "..", "views", "add-product.html"));
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    activeAddProduct: true,
+    path: "/admin/add-product",
+  });
 });
 // /admin/product
 router.post("/add-product", (req, res, next) => {
   const { title, author } = req.body;
-  console.log(title, author);
+  products.push({ author: author, title: title });
   res.redirect("/");
 });
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;
